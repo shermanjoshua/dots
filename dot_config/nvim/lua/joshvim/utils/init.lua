@@ -1,0 +1,115 @@
+return {}
+-- ---@type string
+-- local xdg_config = vim.env.XDG_CONFIG_HOME or vim.env.HOME .. "/.config"
+--
+-- ---@class Util
+-- local M = {}
+-- -- -@field root joshvim.utils.root
+-- -- -@field telescope joshvim.utils.telescope
+-- -- -@field theme joshvim.utils.theme
+-- -- -@field plugin joshvim.utils.plugin
+-- -- -@field lualine joshvim.utils.lualine
+-- -- -@field cmd joshvim.utils.cmd
+-- -- -@field lsp joshvim.utils.lsp
+-- -- -@field string joshvim.utils.string
+-- -- -@field table joshvim.utils.table
+-- -- -@field ui joshvim.utils.ui
+-- -- -@field cmp joshvim.utils.cmp
+-- -- local M = {}
+-- --
+-- -- setmetatable(M, {
+-- --   __index = function(_, k)
+-- --     local mod = require("joshvim.utils." .. k)
+-- --     return mod
+-- --   end,
+-- -- })
+-- --
+-- -- ---@param group string The name of the group
+-- -- function M.augroup(group)
+-- --   return vim.api.nvim_create_augroup(Profile.name .. "-" .. group, { clear = true })
+-- -- end
+-- --
+-- -- ---@param fn fun() A callback
+-- -- function M.on_very_lazy(fn)
+-- --   vim.api.nvim_create_autocmd("User", {
+-- --     pattern = "VeryLazy",
+-- --     callback = function()
+-- --       fn()
+-- --     end,
+-- --   })
+-- -- end
+-- --
+-- -- ---A Notifier
+-- -- --- @param msg string
+-- -- --- @param level "DEBUG" |"INFO" | "WARN" | "ERROR" | number
+-- -- --- @param opts? table
+-- -- function M.notify(msg, level, opts)
+-- --   opts = opts or {}
+-- --   level = vim.log.levels[level:upper()]
+-- --   if type(msg) == "table" then
+-- --     msg = table.concat(msg, "\n")
+-- --   end
+-- --   local nopts = { title = "Nvim" }
+-- --   if opts.once then
+-- --     return vim.schedule(function()
+-- --       vim.notify_once(msg, level, nopts)
+-- --     end)
+-- --   end
+-- --   vim.schedule(function()
+-- --     vim.notify(msg, level, nopts)
+-- --   end)
+-- -- end
+-- --
+-- -- function M.error(msg)
+-- --   M.notify(msg, "ERROR", { title = Profile.name, timeout = 1000 })
+-- -- end
+-- --
+-- -- ---@param fn fun() The function to try
+-- -- ---@param opts {msg?: string, on_error?: fun(err: string)}
+-- -- function M.try(fn, opts)
+-- --   local ok, result = xpcall(fn, function(error)
+-- --     local msg = (opts and opts.msg or "") .. (opts and opts.msg and "\n\n" or "") .. error
+-- --     local handler = opts and opts.on_error or M.error
+-- --     handler(msg)
+-- --     return error
+-- --   end)
+-- --   return ok and result or nil
+-- -- end
+--
+-- ---@param path string
+-- local function have(path)
+--   return vim.uv.fs_stat(xdg_config .. "/" .. path) ~= nil
+-- end
+--
+-- function M.safe_keymap_set(mode, lhs, rhs, opts)
+--   local keys = require("lazy.core.handler").handlers.keys
+--   ---@cast keys LazyKeysHandler
+--   local modes = type(mode) == "string" and { mode } or mode
+--
+--   ---@param m string
+--   modes = vim.tbl_filter(function(m)
+--     return not (keys.have and keys:have(lhs, m))
+--   end, modes)
+--
+--   if #modes > 0 then
+--     opts = opts or {}
+--     opts.silent = opts.silent ~= false
+--     if opts.remap and not vim.g.vscode then
+--       ---@diagnostic disable-next-line: no-unknown
+--       opts.remap = nil
+--     end
+--     vim.keymap.set(modes, lhs, rhs, opts)
+--   end
+-- end
+--
+-- -- local executed = false
+-- -- Ensures that the given callback is only executed once
+-- -- ---@param callback fun()
+-- -- function M.once(callback)
+-- --   if not executed then
+-- --     callback()
+-- --     executed = true
+-- --   end
+-- -- end
+--
+-- return M

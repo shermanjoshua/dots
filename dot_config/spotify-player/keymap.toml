@@ -1,0 +1,37 @@
+# Mappings/Instructions
+# https://github.com/aome510/spotify-player/blob/master/docs/config.md#actions
+
+# TEMPLATES
+
+#[[keymaps]]
+#command = ""
+#key_sequence = ""
+
+#[[actions]]
+#action = "GoToArtist"
+#key_sequence = "g A"
+
+[[keymaps]]
+command = "FocusNextWindow"
+key_sequence = "C-l"
+
+[[keymaps]]
+command = "FocusPreviousWindow"
+key_sequence = "C-h"
+
+[[keymaps]]
+command = "Quit"
+key_sequence = ": q"
+
+#[[keymaps]]
+#command = ""
+#key_sequence = ""
+
+#[[keymaps]]
+#command = ""
+#key_sequence = ""
+
+#[[keymaps]]
+#command = ""
+#key_sequence = ""
+
