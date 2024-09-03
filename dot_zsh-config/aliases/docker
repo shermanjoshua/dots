@@ -1,0 +1,21 @@
+# Docker helper functions
+rmiuntagged() {
+  docker rmi $(docker images -q --filter "dangling=true")
+}
+
+rmlast() {
+  docker rm $(docker ps -lq)
+}
+
+stoplast() {
+  docker stop $(docker ps -lq)
+}
+
+rmstopped() {
+  docker rm $(docker ps -a -q)
+}
+
+alias dm="docker-machine"
+alias dc="docker compose"
+alias dstats="docker stats \$(docker inspect --format='{{.Name}}' \$(docker ps -q --no-trunc))"
+alias jaeger="docker run -d --name jaeger -p "16686:16686" jaegertracing/all-in-one"

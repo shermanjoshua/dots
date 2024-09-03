@@ -1,0 +1,82 @@
+; vim: ft=gitconfig
+
+[user]
+  name = Josh Sherman
+  email = {{ .email }}
+
+[github]
+  user = jsherman-textus
+
+[core]
+  editor = nvim
+  excludesfile = ~/.gitignore_global
+  autocrlf = input
+
+[help]
+  autocorrect=-1
+
+[push]
+  default = tracking
+
+[log]
+  date = local
+
+[alias]
+  # Log aliases
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)- %an%Creset' --abbrev-commit --date=relative
+  lstat = log --stat --relative --abbrev-commit --date=local --pretty=format:'%C(white)%h %C(cyan)%cr %C(green)by %cn %Creset%C(yellow)%n%s%Creset'
+  peeps = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
+  lf = "!f() { git log --follow $1; }; f" # Shows the log for a file and it follows the revisions of the file when renamed
+
+  di = diff --staged
+
+  # Branch / Remote management
+  fmerge = merge --ff-only
+  req = "!f() { git fetch origin refs/pull/$1/head:pr/$1 -f; } ; f"
+
+  wt = worktree
+  wtl = worktree list
+  wta = worktree add
+  # TODO figure out a chdir solution
+  wtp = "!f() { \
+    wtpath=$(git worktree list | grep "\\\\[$1]" | sed 's/ .*//g'); \
+    echo $wtpath; \
+  }; f"
+
+  # Basic Commands
+  co = checkout
+  com = checkout master
+  cod = checkout develop
+  cop = "!f() { git checkout pr/$1; }; f"
+  ci = commit -S
+  st = status -sb
+  mt = mergeTool
+  ba = branch
+  baa = branch -a
+  pr = !git fa && git pull --rebase
+  cp = cherry-pick
+  aa = add -A .
+  fa = fetch -p --all
+  rc = rebase --continue
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+
+[merge]
+	tool = p4mergetool
+
+[mergetool "p4mergetool"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
+	trustExitCode = false
+
+[mergetool]
+	keepBackup = false
+
+[safe]
+	directory = /opt/homebrew
+
+[pull]
+	ff = only
+	rebase = false

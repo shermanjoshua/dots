@@ -1,0 +1,11 @@
+{{- $email := "josh.sherman@textus.com"}}
+
+[data]
+  email = {{ $email | quote }}
+  zshPlugins = [
+    "vi-mode",
+    "zsh-syntax-highlighting",
+  ]
+
+[github]
+  refreshPeriod = 12h

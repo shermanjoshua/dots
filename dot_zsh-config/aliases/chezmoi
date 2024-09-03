@@ -1,0 +1,4 @@
+alias cm="chezmoi"
+alias cma="chezmoi add"
+alias cms="chezmoi status"
+
