@@ -19,47 +19,40 @@ return {
         local opts = { buffer = ev.buf, silent = true }
 
         opts.desc = "Show LSP references"
-        keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+        keymap.set("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
 
-        opts.desc = "Go to declaration"
-        keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+        opts.desc = "Go to LSP definition"
+        keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- goto declaration
 
-        opts.desc = "Show LSP definitions"
-        keymap.set("n", "gd", "<cmd>Telescope lsp_definitions jump_type=never<CR>", opts)
+        opts.desc = "Show LSP definitions and edit in preview"
+        keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
 
-        opts.desc = "Show LSP implementations"
-        keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR> jump_type=never", opts)
+        opts.desc = "Goto LSP implementations"
+        keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- goto implementation
 
-        opts.desc = "Show LSP type definitions"
-        keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions jump_type=never<CR>", opts)
-
-        opts.desc = "See available code actions"
-        keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+        opts.desc = "Show LSP code actions"
+        keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
 
         opts.desc = "Smart rename"
-        keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
-        opts.desc = "Show buffer diagnostics"
-        keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+        keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
 
         opts.desc = "Show line diagnostics"
-        keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+        keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
 
-        opts.desc = "Go to previous diagnostic"
-        keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+        opts.desc = "Show cursor diagnostics"
+        keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
 
-        opts.desc = "Go to next diagnostic"
-        keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+        opts.desc = "Jump to previous diagnostic"
+        keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
+
+        opts.desc = "Jump to next diagnostic"
+        keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 
         opts.desc = "Show documentation for what is under cursor"
-        keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
-        opts.desc = "Restart LSP"
-        keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
+        keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
       end,
     })
 
-    -- local capabilities = cmp_nvim_lsp.default_capabilities()
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
     local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -100,20 +93,14 @@ return {
           cmd = { os.getenv("HOME") .. "/.rbenv/shims/solargraph", "stdio" },
           root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
           capabilities = capabilities,
-          init_options = {
-            formatting = false,
-          },
           settings = {
             solargraph = {
               autoformat = false,
               checkGemVersion = true,
               completion = true,
               definitions = true,
-              diagnostics = true,
               folding = true,
-              formatting = false,
               hover = true,
-              logLevel = "warn",
               references = true,
               rename = true,
               symbols = true,
@@ -123,26 +110,26 @@ return {
           filetypes = { "ruby", "rakefile", "rake" },
         })
       end,
-      ["standardrb"] = function()
-        lspconfig["standardrb"].setup({
-          cmd = { os.getenv("HOME") .. "/.rbenv/shims/standardrb", "--lsp" },
-          root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
-          capabilities = capabilities,
-          settings = {
-            standardrb = {
-              autoformat = true,
-              formatting = true,
-              completion = true,
-              diagnostics = true,
-              folding = true,
-              references = true,
-              rename = true,
-              symbols = true,
-            },
-          },
-          filetypes = { "ruby", "rakefile", "rake" },
-        })
-      end,
+      -- ["standardrb"] = function()
+      --   lspconfig["standardrb"].setup({
+      --     cmd = { os.getenv("HOME") .. "/.rbenv/shims/standardrb", "--lsp" },
+      --     root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
+      --     capabilities = capabilities,
+      --     settings = {
+      --       standardrb = {
+      --         autoformat = true,
+      --         formatting = true,
+      --         completion = false,
+      --         diagnostics = false,
+      --         folding = false,
+      --         references = false,
+      --         rename = false,
+      --         symbols = false,
+      --       },
+      --     },
+      --     filetypes = { "ruby", "rakefile", "rake" },
+      --   })
+      -- end,
       ["graphql"] = function()
         lspconfig["graphql"].setup({
           capabilities = capabilities,

@@ -1,3 +1,4 @@
+# TODO: For this to work, gotta figure out the kitty/nvim nav thing
 return {
   "fedepujol/move.nvim",
   config = function()

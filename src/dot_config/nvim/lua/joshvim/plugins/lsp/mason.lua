@@ -37,6 +37,7 @@ return {
 
     mason_tool_installer.setup({
       -- list linters here
+      -- TODO: ditch the other linter plugin
       ensure_installed = {
         "prettier",
         "stylua",
@@ -45,7 +46,7 @@ return {
         "pylint",
         "eslint_d",
         "terraform-ls",
-        "standardrb",
+        -- "standardrb",
         "yamlls",
       },
     })
