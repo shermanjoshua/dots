@@ -1,0 +1,15 @@
+{
+	"latest_signin": "textus",
+	"device": "qhgnczmsrqfqvp6dqee3aegygu",
+	"accounts": [
+		{
+			"shorthand": "textus",
+			"accountUUID": "KYYR25WIMNBWHJL3IV7BDJKFOI",
+			"url": "https://textus.1password.com",
+			"email": "josh.sherman@textus.com",
+			"accountKey": "A3-PW3BWS-965R8W-7DQ99-75P83-VQZ6C-H623N",
+			"userUUID": "6WX2HAWOY5BZZCKDD4QO3HHKTM"
+		}
+	],
+	"system_auth_latest_signin": "6WX2HAWOY5BZZCKDD4QO3HHKTM"
+}
