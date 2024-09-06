@@ -147,10 +147,6 @@ return {
           capabilities = capabilities,
           settings = {
             yaml = {
-              schemastore = {
-                enable = true,
-                url = "https://www.schemastore.org/api/json/catalog.json",
-              },
               schemas = {
                 ["https://json.schemastore.org/circleciconfig.json"] = "/.circleci/config.yml",
               },
