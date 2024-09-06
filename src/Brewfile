@@ -1,171 +1,89 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
-# CLI tool for working with Architecture Decision Records
 brew "adr-tools"
-# Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
-# Mozilla CA certificate store
 brew "ca-certificates"
-# Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
-# Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
-# Official Amazon AWS command-line interface
 brew "awscli"
-# Microsoft Azure CLI 2.0
 brew "azure-cli"
-# Concurrent, cache-efficient, and Dockerfile-agnostic builder toolkit
 brew "buildkit"
-# Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
-# Wrap rust executables in OS-specific app bundles
 brew "cargo-bundle"
-# Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
-# Enables you to reproduce the CircleCI environment locally
 brew "circleci"
-# Cross-platform make
 brew "cmake"
-# Tool for browsing source code
 brew "cscope"
-# Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
-# Load/unload environment variables based on $PWD
 brew "direnv"
-# Pack, ship and run any application as a lightweight container
 brew "docker"
-# Isolated development environments using Docker
 brew "docker-compose"
-# Generate documentation for several programming languages
 brew "doxygen"
-# Simple, fast and user-friendly alternative to find
 brew "fd"
-# Command-line fuzzy finder written in Go
 brew "fzf"
-# GNU compiler collection
 brew "gcc"
-# GitHub command-line tool
 brew "gh"
-# Distributed revision control system
 brew "git"
-# Tool Command Language
 brew "tcl-tk"
-# Tcl/Tk UI for the git revision control system
 brew "git-gui"
-# Git extension for versioning large files
 brew "git-lfs"
-# Asynchronous event library
 brew "libevent"
-# Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Library to render SVG files using Cairo
 brew "librsvg"
-# Generic library support script
 brew "libtool"
-# Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
-# Implementation of malloc emphasizing fragmentation avoidance
 brew "jemalloc"
-# Asynchronous event library
 brew "libev"
-# C library to parse Metalink XML files
 brew "libmetalink"
-# NaCl networking and cryptography library
 brew "libsodium"
-# Library for processing keyboard entry from the terminal
 brew "libtermkey"
-# Multi-platform support library with a focus on asynchronous I/O
 brew "libuv"
-# C99 library which implements a VT220 or xterm terminal emulator
 brew "libvterm"
-# Linux virtual machines
 brew "lima"
-# Powerful, lightweight programming language
 brew "lua"
-# Language Server for the Lua language
 brew "lua-language-server"
-# Package manager for the Lua programming language
 brew "luarocks"
-# Mac App Store command-line interface
 brew "mas"
-# Library for a binary-based efficient data interchange format
 brew "msgpack"
-# Node version management
 brew "n", link: false
-# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# HTTP/2 C Library
 brew "nghttp2"
-# Development kit for the Java programming language
 brew "openjdk"
-# Clean C library for processing UTF-8 Unicode data
 brew "utf8proc"
-# Terminal multiplexer
 brew "tmux"
-# Process manager for Procfile-based applications and tmux
 brew "overmind"
-# Highly capable, feature-rich programming language
 brew "perl"
-# Execute binaries from Python packages in isolated environments
 brew "pipx"
-# Paste PNG into files
 brew "pngpaste"
-# Object-relational database system
 brew "postgresql@13", link: true
-# Python version management
 brew "pyenv"
-# Install various Ruby versions and implementations
 brew "ruby-build"
-# Ruby version manager
 brew "rbenv"
-# Makes shims aware of bundle install paths
 brew "rbenv-bundler"
-# Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
-# Persistent key-value database, with built-in net interface
 brew "redis"
-# Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Database of common MIME types
 brew "shared-mime-info"
-# Ruby language server
 brew "solargraph"
-# Command driven spotify player
 brew "spotify_player"
-# Code-search similar to ack
 brew "the_silver_searcher"
-# Programmatically correct mistyped console commands
 brew "thefuck"
-# Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Internet file retriever
 brew "wget"
-# Yet Another Dotfiles Manager
 brew "yadm"
-# Linter for YAML files
 brew "yamllint"
-# Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
-# Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# Command-line interface for 1Password
 cask "1password-cli"
-# Application launcher and productivity software
 cask "alfred"
-# Developer platform
 cask "dotnet-sdk"
 cask "font-meslo-lg-nerd-font"
-# Web browser
 cask "google-chrome"
-# GPU-based terminal emulator
+cask "gpg-suite-no-mail"
 cask "kitty"
-# Visual client for Helix Core
 cask "p4v"
-# Command-line shell and scripting language
 cask "powershell"
-# Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask "session-manager-plugin"
-# Open-source code editor
 cask "visual-studio-code"
 mas "Dashlane", id: 517914548
 mas "GarageBand", id: 682658836
