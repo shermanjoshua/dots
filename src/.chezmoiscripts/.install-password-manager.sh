@@ -7,12 +7,20 @@ case "$(uname -s)" in
 Darwin)
     # commands to install password-manager-binary on Darwin
 
-    if [[ type brew >/dev/null ]]; then
+    if [[ $(command -v brew) == "" ]]; then
+      echo "installing homebrew..."
      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
     fi
     
     brew bundle install --global
 
+    # This part if fucking stupid, but it is what it is right now....
+    # Dashlane does NOT have CLI support for logging in without user 
+    # interation. There is no silent mode or -y or anything. So when
+    # the `sync` command runs, you'll have to copy the URL, open
+    # something to use to hit that URL and do that, and then use the 
+    # arrow keys to select the "email" option. Then you wait, copy the
+    # code from the email, and manually paste it here. 🤦
     dcli sync
     dcli n DOTFILES_PRIVATE_KEY | ssh-add -
 
