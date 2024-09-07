@@ -4,7 +4,8 @@
 
 ## GLOBAL STUFF
 
-[] Add multi-OS support a la [twpayne](https://github.com/twpayne/dotfiles)
+[] Add multi-OS support a la [twpayne]()
+[] Add "one-shot" install for containers/ssh
 []
 
 ## OS VERSIONED STUFF
