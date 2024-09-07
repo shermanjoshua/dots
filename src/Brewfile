@@ -1,3 +1,4 @@
+tap "dashlane/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
 brew "adr-tools"
@@ -70,10 +71,10 @@ brew "the_silver_searcher"
 brew "thefuck"
 brew "tree"
 brew "wget"
-brew "yadm"
 brew "yamllint"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
+brew "dashlane/tap/dashlane-cli"
 cask "1password-cli"
 cask "alfred"
 cask "dotnet-sdk"
@@ -86,13 +87,8 @@ cask "powershell"
 cask "session-manager-plugin"
 cask "visual-studio-code"
 mas "Dashlane", id: 517914548
-mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
 mas "Logic Pro", id: 634148309
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Telegram", id: 747648890
 mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
 vscode "1password.op-vscode"

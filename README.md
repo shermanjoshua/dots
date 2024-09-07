@@ -26,3 +26,9 @@ the whole setup truly worked.
 - ... that's it
 
 ### Process (it's crazy easy)
+
+### TODO
+
+[] finish readme
+[] add dashlane install
+[] fix decrypt
