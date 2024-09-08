@@ -1,5 +1,5 @@
 name: "Josh Sherman"
-{{ $email := promptString "email" -}}
+{{ $email := promptStringOnce "email" -}}
 gpgKeyId: "34230383"
 
 merge:
@@ -12,12 +12,12 @@ merge:
 
 encryption: "gpg"
 gpg:
-  recipient: "34230383"
+  recipient: "{{ $email }}"
 
 hooks:
   read-source-state:
     pre:
-      command: "/Users/jsherman/.local/share/chezmoi/src/.chezmoiscripts/.install-password-manager.sh"
+      command: "~/.local/share/chezmoi/src/.chezmoiscripts/.install-password-manager.sh"
 
 git:
   autoCommit: true
