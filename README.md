@@ -1,20 +1,16 @@
 # github.com/shermanjoshua/dots
 
-## The Story (or _"Inspo"_) I suppose
+## The Important Stuff
 
-The other day I was working on something while paired up with a colleague. I was just plugging along in my trusty
-old iterm/tmux/zsh/vim setup. I had a bazillion plugins that I had gathered over the past 15 or so years of using it,
-and while it always served me well, time and laziness had won the war. While trying to run some scripts in an AWS
-environment (not prod... never prod), I managed to crash the fucking thing 3 times in a row doing nothing more than
-copy/pasting from the terminal to a vim buffer.
+These are my new (as of 2024) dotfiles. They are based off of a few key chunks that are pretty common right now, but they definitely have my "flavor" to them...
 
-Now I'm 100% positive that _I_ was the problem here and was just doing something wrong - maybe a new config ran over something, maybe my muscles had lost their memory and the keybind I was using was actually `HACF`. But the fact that it happened at all pointed out a bigger problem...
+**Here's the high-level stuff:**
 
-issue that I'd been ignoring. I had these bazillion plugins, tools, completions, lsp tools, etc etc etc ad infinitum,
-but I had stopped bothering to cull everything down that I didn't want or need. Because of this, I had forgotten **HOW**
-the whole setup truly worked.
-
-[chezmoi](https://chezmoi.io)
+- [chezmoi](https://chezmoi.io) is what I'm using currently to manage this repo and installation across machines.
+  - Felt cute. Might delete.
+- These should be fully idempotent. Fix anything that is not immediately.
+- I'm using Dashlane for secret management. chezmoi offers lots of other tool integrations though.
+  - Probably will just switch to Azure/AWS secrets.
 
 ## Installation
 
@@ -33,8 +29,15 @@ So are directories.
 `chezmoi` is a fickle bitch and it was intentionally built in a very opinionated way.
 Don't waste time making it do stuff it doesn't want to!
 
+#### Steps
+
+- You are already reading this, so you should either have or be able to download the release from the repo.
+  - Clone everything into a folder called `chezmoi` at `~/.local/share`
+- `./install.sh` should already be executable, so test that and run it. If you don't have permissions, just `chmod +x ./install.sh` to run - BUT FIX THAT SHIT NOW!!! It's happened twice if you are reading this!!!
+- That's it. Shit should just install. The first time you open nvim Lazy and Mason should just install everything automatically too.
+
 ### TODO
 
-[ ] finish readme
+[x] finish readme
 [x] add dashlane install
 [ ] fix decrypt
