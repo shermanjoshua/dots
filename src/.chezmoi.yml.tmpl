@@ -1,5 +1,5 @@
 name: "Josh Sherman"
-{{ $email := promptStringOnce "email" -}}
+{{ $email := promptString "email" -}}
 gpgKeyId: "34230383"
 
 merge:
@@ -27,3 +27,5 @@ progress: true
 data:
   email: {{ $email | quote }}
   editor: nvim
+.gnupg
+.gnupg/**
