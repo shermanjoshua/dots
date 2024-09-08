@@ -12,7 +12,7 @@ Darwin)
      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
     fi
     
-    brew bundle install --global
+    brew bundle install --file="/Users/jsherman/.local/share/chezmoi/src/Brewfile"
 
     # This part if fucking stupid, but it is what it is right now....
     # Dashlane does NOT have CLI support for logging in without user 
