@@ -12,12 +12,13 @@ Darwin)
      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
     fi
     
-    brew bundle install --file="/Users/jsherman/.local/share/chezmoi/src/Brewfile"
+    brew bundle install --file="${HOME}/.local/share/chezmoi/src/Brewfile"
 
     dcli sync
     dcli n DOTFILES_PRIVATE_KEY | ssh-add -
 
     # Handling the upload of gpg keys here as well, so that they are available as soon as possible.
+    gpgconf --kill gpg-agent
     gpg --import ~/.local/share/chezmoi/src/.keys/dotfiles.asc
 
     ;;
