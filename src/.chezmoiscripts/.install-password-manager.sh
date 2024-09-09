@@ -17,9 +17,8 @@ Darwin)
     dcli sync
     dcli n DOTFILES_PRIVATE_KEY | ssh-add -
 
-    # Handling the upload of gpg keys here as well, so that they are available as soon as possible.
     gpgconf --kill gpg-agent
-    gpg --import ~/.local/share/chezmoi/src/.keys/dotfiles.asc
+    gpg --list-keys
 
     ;;
 Linux)
