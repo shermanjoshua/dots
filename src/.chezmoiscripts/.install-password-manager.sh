@@ -1,4 +1,4 @@
-#!{{ lookPath "bash" }}
+#!/bin/bash
 
 # exit immediately if password-manager-binary is already in $PATH
 type dcli >/dev/null 2>&1 && exit
@@ -11,7 +11,7 @@ Darwin)
      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
     fi
     
-    brew bundle install --file ~/.local/share/chezmoi/src/Brewfile
+    brew bundle install --file=~/.local/share/chezmoi/src/Brewfile
 
     dcli sync
     dcli n DOTFILES_PRIVATE_KEY | ssh-add -
