@@ -54,6 +54,7 @@ brew "utf8proc"
 brew "tmux"
 brew "overmind"
 brew "perl"
+brew "pinentry-mac"
 brew "pipx"
 brew "pngpaste"
 brew "postgresql@13", link: true
