@@ -1,5 +1,5 @@
 name: "Josh Sherman"
-{{ $email := promptString "email" -}}
+{{ $email := promptStringOnce . "email" "Email address" -}}
 gpgKeyId: "334F4C7D"
 
 merge:
