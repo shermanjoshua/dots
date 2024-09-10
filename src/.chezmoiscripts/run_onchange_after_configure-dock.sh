@@ -2,7 +2,7 @@
 
 set -eufo pipefail
 
-trap 'killall Dock' EXIT
+# trap 'killall Dock' EXIT
 
 declare -a remove_labels=(
 	Launchpad
@@ -21,5 +21,6 @@ declare -a remove_labels=(
 )
 
 for label in "${remove_labels[@]}"; do
-	dockutil --no-restart --remove "${label}" || true
+  echo "skipping remove of ${label}..."
+	# dockutil --no-restart --remove "${label}" || true
 done

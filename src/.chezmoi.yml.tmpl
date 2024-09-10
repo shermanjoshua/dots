@@ -1,6 +1,6 @@
 name: "Josh Sherman"
-{{ $email := promptString "email" -}}
-gpgKeyId: "34230383"
+{{ $email := promptStringOnce . "email" "Email address" -}}
+gpgKeyId: "334F4C7D"
 
 merge:
   command: "nvim"
@@ -12,18 +12,13 @@ merge:
 
 encryption: "gpg"
 gpg:
-  recipient: "{{ $email }}"
+  recipient: "334F4C7D"
 
 pinentry:
   command: "pinentry"
 
-hooks:
-  read-source-state:
-    pre:
-      command: "~/.local/share/chezmoi/src/.chezmoiscripts/.install-password-manager.sh"
-
 git:
-  autoCommit: true
+  autoCommit: false
 
 progress: true
 
