@@ -15,6 +15,7 @@ fi
 export ZSH=$HOME/.oh-my-zsh
 export EDITOR=nvim
 ZSH_THEME="powerlevel10k/powerlevel10k"
+DISABLE_AUTO_UPDATE="true"
 
 # Aliases
 for f in ~/.zsh-config/aliases/*
