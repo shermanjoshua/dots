@@ -6,7 +6,7 @@
 
 [] Add multi-OS support a la [twpayne]()
 [] Add "one-shot" install for containers/ssh
-[]
+[] Use blob storage for gpg/ssh keys
 
 ## OS VERSIONED STUFF
 

@@ -41,4 +41,4 @@ Don't waste time making it do stuff it doesn't want to!
 [x] finish readme
 [x] add dashlane install
 [x] fix decrypt
-[ ] pre-run installer
+[x] pre-run installer

@@ -2,9 +2,6 @@
 
 set -eu
 
-echo "Felt cute. Might Delete."
-
-# exit immediately if dcli is already in $PATH
 type dcli >/dev/null 2>&1 && exit
 
 case "$(uname -s)" in
