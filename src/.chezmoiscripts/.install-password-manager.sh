@@ -5,23 +5,18 @@ set -eu
 type dcli >/dev/null 2>&1 && exit
 
 case "$(uname -s)" in
-Darwin)
+  Darwin)
 
-    if [[ $(command -v brew) == "" ]]; then
-      echo "installing homebrew..."
-     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
-    fi
-    
-    brew bundle install --file=~/.local/share/chezmoi/src/Brewfile
+    echo "installing dashlane cli and syncing..."
 
     dcli sync
     dcli n DOTFILES_PRIVATE_KEY | ssh-add -
 
     ;;
-Linux)
+  Linux)
     # commands to install password-manager-binary on Linux
     ;;
-*)
+  *)
     echo "unsupported OS"
     exit 1
     ;;
