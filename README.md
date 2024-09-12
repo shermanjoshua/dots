@@ -20,35 +20,35 @@ These are my new (as of 2024) dotfiles. I have done quite a bit of work to go th
 - List of (some of) the stuff:
 
 <details>
-  <summary>**An incomplete compendium**</summary>
+  <summary><h4>AN INCOMPLETE COMPENDIUM</h4></summary>
 
-- gnupg (with pinentry setup and automatic key registration)</li>
-- <li> ssh auto-config (with automatic encrypt/decrpt of private keys)</li>
-      <li> p4v suite for mac UI diff/merge</li>
-      <li> git configuration with my aliases and shortcuts</li>
-      <li> CLIs for almost anything along with configs</li>
-      <li> kitty terminal with customer tab bar setup and theme 🐈</li>
-      <li> powerline 10k with my preferred config 🔌</li>
-      <li> zsh with oh-my-zsh and plugins for hundreds of tools, themes, and autocompletes</li>
-      <li> fzf terminal fuzzy search</li>
-      <li> docker/compose/k8 🐳</li>
-      <li> terminal sms/imessage client (coming soon) 💬</li>
-      <li> terminal spotify player 🎧</li>
-      <li> extensive brewfile with casks, taps, and formulae for all tools/software that I use 🍺</li>
-      <li> vscode and dozens of extensions (I like having the option, and some of the extension UIs are pretty nifty...)</li>
-      <li> pgsql and associated tools/configs</li>
-      <li> dashlane and 1password install with CLIs for secrets and file management/import</li>
-      <li> Neovim editor with about 40 plugins. Highlights include:</li>
-       <li>telescope with all pickers</li>
-       <li>especially nice - check out the `quickfix list` integration/wrapper. Makes working with the lists super slick.</li>
-       <li>noice with sane config</li>
-       <li>lsp configured and setup</li>
-       <li>lazy/mason package managers</li>
-       <li>dynamic lsp-config for easy addition/extension of lsp and linting tools</li>
-       <li>cmp completion with full extensibility and plugins</li>
-       <li>neogit/octo for git, diff/merge, github, and pr management from nvim</li>
-       <li>which-key configured for keybind prompting (recognizes first keypress and shows menu of options)</li>
-       <li>a gazillion other little things...</li>
+- gnupg (with pinentry setup and automatic key registration)
+- ssh auto-config (with automatic encrypt/decrpt of private keys)
+- p4v suite for mac UI diff/merge
+- git configuration with my aliases and shortcuts
+- CLIs for almost anything along with configs
+- kitty terminal with customer tab bar setup and theme 🐈
+- powerline 10k with my preferred config 🔌
+- zsh with oh-my-zsh and plugins for hundreds of tools, themes, and autocompletes
+- fzf terminal fuzzy search
+- docker/compose/k8 🐳
+- terminal sms/imessage client (coming soon) 💬
+- terminal spotify player 🎧
+- extensive brewfile with casks, taps, and formulae for all tools/software that I use 🍺
+- vscode and dozens of extensions (I like having the option, and some of the extension UIs are pretty nifty...)
+- pgsql and associated tools/configs
+- dashlane and 1password install with CLIs for secrets and file management/import
+- Neovim editor with about 40 plugins. Highlights include:
+  - telescope with all pickers
+  - especially nice - check out the `quickfix list` integration/wrapper. Makes working with the lists super slick.
+  - noice with sane config
+  - lsp configured and setup
+  - lazy/mason package managers
+  - dynamic lsp-config for easy addition/extension of lsp and linting tools
+  - cmp completion with full extensibility and plugins
+  - neogit/octo for git, diff/merge, github, and pr management from nvim
+  - which-key configured for keybind prompting (recognizes first keypress and shows menu of options)
+  - a gazillion other little things...
 
 </details>
 
