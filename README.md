@@ -39,10 +39,11 @@ These are my new (as of 2024) dotfiles. I have done quite a bit of work to go th
 - pgsql and associated tools/configs
 - dashlane and 1password install with CLIs for secrets and file management/import
 - Neovim editor with about 40 plugins. Highlights include:
-  - telescope with all pickers
+  - telescope with all pickers, fuzzy search (`<leader>fs` for the fastest live grep I've ever used)
   - especially nice - check out the `quickfix list` integration/wrapper. Makes working with the lists super slick.
   - noice with sane config
   - lsp configured and setup
+    - ruby, ts, lua, yaml, css, emmet, and more pre-configured and ready to go!
   - lazy/mason package managers
   - dynamic lsp-config for easy addition/extension of lsp and linting tools
   - cmp completion with full extensibility and plugins
