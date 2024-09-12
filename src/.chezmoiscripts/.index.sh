@@ -3,20 +3,10 @@
 set -eu
 
 declare script_dir=$PWD/$(dirname "$0")
+declare -a file_list=()
 
-file_list=(
-  ".install-password-manager.sh",
-  ".install-homebrew.sh"
-  )
-
-for file in "${file_list[@]}"; do
-  if [ ! -f "$script_dir/$file" ]; then
-    echo "Initial scripts - File: $file not found!"
-    exit 1
-    else
-      /bin/bash $script_dir/$file
+for file in $(find "$script_dir" -type f -name '.*'); do
+  if [[ ! "$file" == *"index.sh" ]]; then
+    /bin/bash $file
   fi
 done
-
-# /bin/bash $script_dir/.install-password-manager.sh
-# /bin/bash $script_dir/.install-homebrew.sh
