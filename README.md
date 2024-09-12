@@ -22,23 +22,23 @@ These are my new (as of 2024) dotfiles. I have done quite a bit of work to go th
 <details>
   <summary>An incomplete compendium</summary>
 
-    * <kbd>gnupg (with pinentry setup and automatic key registration)
-    * <kbd>ssh auto-config (with automatic encrypt/decrpt of private keys)
-    * <kbd>p4v suite for mac UI diff/merge
-    * <kbd>git configuration with my aliases and shortcuts
-    * <kbd>CLIs for almost anything along with configs
-    * <kbd>kitty terminal with customer tab bar setup and theme 🐈
-    * <kbd>powerline 10k with my preferred config 🔌
-    * <kbd>zsh with oh-my-zsh and plugins for hundreds of tools, themes, and autocompletes
-    * <kbd>fzf terminal fuzzy search
-    * <kbd>docker/compose/k8 🐳
-    * <kbd>terminal sms/imessage client (coming soon) 💬
-    * <kbd>terminal spotify player 🎧
-    * <kbd>extensive brewfile with casks, taps, and formulae for all tools/software that I use 🍺
-    * <kbd>vscode and dozens of extensions (I like having the option, and some of the extension UIs are pretty nifty...)
-    * <kbd>pgsql and associated tools/configs
-    * <kbd>dashlane and 1password install with CLIs for secrets and file management/import
-    * <kbd>Neovim editor with about 40 plugins. Highlights include:
+    * gnupg (with pinentry setup and automatic key registration)
+    * ssh auto-config (with automatic encrypt/decrpt of private keys)
+    * p4v suite for mac UI diff/merge
+    * git configuration with my aliases and shortcuts
+    * CLIs for almost anything along with configs
+    * kitty terminal with customer tab bar setup and theme 🐈
+    * powerline 10k with my preferred config 🔌
+    * zsh with oh-my-zsh and plugins for hundreds of tools, themes, and autocompletes
+    * fzf terminal fuzzy search
+    * docker/compose/k8 🐳
+    * terminal sms/imessage client (coming soon) 💬
+    * terminal spotify player 🎧
+    * extensive brewfile with casks, taps, and formulae for all tools/software that I use 🍺
+    * vscode and dozens of extensions (I like having the option, and some of the extension UIs are pretty nifty...)
+    * pgsql and associated tools/configs
+    * dashlane and 1password install with CLIs for secrets and file management/import
+    * Neovim editor with about 40 plugins. Highlights include:
       - telescope with all pickers
         - especially nice - check out the `quickfix list` integration/wrapper. Makes working with the lists super slick.
       - noice with sane config
