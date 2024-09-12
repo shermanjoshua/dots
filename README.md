@@ -22,9 +22,8 @@ These are my new (as of 2024) dotfiles. I have done quite a bit of work to go th
 <details>
   <summary>**An incomplete compendium**</summary>
 
-    <ul>
-      <li> gnupg (with pinentry setup and automatic key registration)</li>
-      <li> ssh auto-config (with automatic encrypt/decrpt of private keys)</li>
+- gnupg (with pinentry setup and automatic key registration)</li>
+- <li> ssh auto-config (with automatic encrypt/decrpt of private keys)</li>
       <li> p4v suite for mac UI diff/merge</li>
       <li> git configuration with my aliases and shortcuts</li>
       <li> CLIs for almost anything along with configs</li>
@@ -50,7 +49,6 @@ These are my new (as of 2024) dotfiles. I have done quite a bit of work to go th
        <li>neogit/octo for git, diff/merge, github, and pr management from nvim</li>
        <li>which-key configured for keybind prompting (recognizes first keypress and shows menu of options)</li>
        <li>a gazillion other little things...</li>
-    </ul>
 
 </details>
 
