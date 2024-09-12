@@ -31,17 +31,19 @@ These are my new (as of 2024) dotfiles. I have done quite a bit of work to go th
 * zsh with oh-my-zsh and plugins for hundreds of tools, themes, and autocompletes
 * fzf terminal fuzzy search
 * docker/compose/k8 🐳
-* terminal sms/imessage client (coming soon)  💬
+* terminal sms/imessage client (coming soon) 💬
 * terminal spotify player 🎧
-* extensive brewfile with casks, taps, and formulae for any dev tool I need 🍺
-* vscode and dozens of extensions
+* extensive brewfile with casks, taps, and formulae for all tools/software that I use 🍺
+* vscode and dozens of extensions (I like having the option, and some of the extension UIs are pretty nifty...)
 * pgsql and associated tools/configs
 * dashlane and 1password install with CLIs for secrets and file management/import
 * Neovim editor with about 40 plugins. Highlights include:
   - telescope with all pickers
+    - especially nice - check out the `quickfix list` integration/wrapper. Makes working with the lists super slick.
   - noice with sane config
   - lsp configured and setup
   - lazy/mason package managers
+  - dynamic lsp-config for easy addition/extension of lsp and linting tools
   - cmp completion with full extensibility and plugins
   - neogit/octo for git, diff/merge, github, and pr management from nvim
   - which-key configured for keybind prompting (recognizes first keypress and shows menu of options)
@@ -60,25 +62,28 @@ These are my new (as of 2024) dotfiles. I have done quite a bit of work to go th
 
 ### Process (it's crazy easy)
 
-_Some tips..._
-
-Filenames are important here.
-So are directories.
-`chezmoi` is a fickle bitch and it was intentionally built in a very opinionated way.
-Don't waste time making it do stuff it doesn't want to!
+> [!TIP] > _Some tips..._
+>
+> Filenames are important here.
+> So are directories.
+> `chezmoi` is a fickle bitch and it was intentionally built in a very opinionated way.
+> Don't waste time making it do stuff it doesn't want to!
 
 #### Steps
 
 - You are already reading this, so you should either have or be able to download the release from the repo.
-  - Clone everything into a folder called `chezmoi` at `~/.local/share`
-- `./install.sh` should already be executable, so test that and run it. If you don't have permissions, just `chmod +x ./install.sh` to run - BUT FIX THAT SHIT NOW!!! It's happened twice if you are reading this!!!
+  - You can clone this anywhere you like. This location will become your `source`. From there, `~/.local/share/chezmoi` will get created as your `target`, and the final drop point for everything on the machine (mostly `~`) becomes the `destination`.
+- `./install.sh` should already be executable, so test that and run it. If you don't have permissions, just `chmod +x ./install.sh` to run.
 - That's it. Shit should just install. The first time you open nvim, Lazy and Mason should just install everything automatically too.
 
 ### TODO
 
-[x] finish readme
-[x] add dashlane install
-[x] fix decrypt
-[x] pre-run installer
+- [x] finish readme
+- [x] add dashlane install
+- [x] fix decrypt
+- [x] pre-run installer
+- [ ] 1password install
+- [ ] test on virtual mac
+- [ ] pull files from blob storage
 
 See ROADMAP.md for more...
