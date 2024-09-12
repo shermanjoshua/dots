@@ -18,7 +18,7 @@ These are my new (as of 2024) dotfiles. I have done quite a bit of work to go th
 
 - NOTE: I try to stay in the terminal as much as possible and limit having to switch to different tools/screens for tasks wherever I can. So I keep quite a bit of stuff in here.
   - Meaning... this is not a small amount of software 😂
-- List of (some) of the stuff:
+- List of (some of) the stuff:
 
 ```
 * gnupg (with pinentry setup and automatic key registration)
@@ -62,7 +62,7 @@ These are my new (as of 2024) dotfiles. I have done quite a bit of work to go th
 
 ### Process (it's crazy easy)
 
-> [!TIP] > _Some tips..._
+> [!TIP]
 >
 > Filenames are important here.
 > So are directories.
