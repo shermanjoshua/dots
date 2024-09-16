@@ -41,4 +41,4 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 
 eval "$(rbenv init -)"
 eval "$(fzf --zsh)"
-eval $(thefuck --alias)
+eval "$(thefuck --alias)"

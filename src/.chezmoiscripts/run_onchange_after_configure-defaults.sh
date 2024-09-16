@@ -24,17 +24,6 @@ defaults write -g com.apple.trackpad.forceClick -int 0
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 
-
-
-
-
-
-
-
-
-
-
-
 # #!/usr/bin/env bash
 #
 # set -x
