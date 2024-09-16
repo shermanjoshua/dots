@@ -1,12 +1,3 @@
-# Company account
-Host work
-HostName github.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/dotfiles_work
-
-# Personal account
-Host personal
-HostName github.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/dotfiles_personal
-
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
