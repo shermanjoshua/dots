@@ -14,7 +14,6 @@ local function setProjectRootByCurrentBuffer()
 
   vim.g["test#project_root"] = path
 end
-
 -- Usage: :TestWithJest when in test file or :TestWithVitest when in test file
 -- vim-test plugin has not supported on large project or monorepo yet. A lot of issues on github
 -- e.g: "Not a test file" error when running any of the test command
@@ -30,21 +29,19 @@ create_cmd("JestRunner", function()
 end, {})
 
 return {
-  {
-    "folke/which-key.nvim",
-    optional = true,
-    opts = {
-      spec = {
-        { "<leader>ct", group = "test" },
-      },
-    },
-  },
   "nvim-neotest/neotest",
+  optional = true,
   dependencies = {
     "nvim-neotest/nvim-nio",
-    { "nvim-neotest/neotest-plenary" },
+    "nvim-neotest/neotest-plenary",
+    "olimorris/neotest-rspec",
+    "nvim-treesitter/nvim-treesitter",
+    "antoinemadec/FixCursorHold.nvim",
   },
   opts = {
+    spec = {
+      { "<leader>ct", group = "test" },
+    },
     -- Can be a list of adapters like what neotest expects,
     -- or a list of adapter names,
     -- or a table of adapter names, mapped to adapter configs.
@@ -57,17 +54,13 @@ return {
         args = { "" },
       },
     },
-    -- Example for loading neotest-go with a custom config
-    -- adapters = {
-    --   ["neotest-go"] = {
-    --     args = { "-tags=integration" },
-    --   },
-    -- },
     status = { virtual_text = true },
     output = { open_on_run = true },
   },
   config = function(_, opts)
     local neotest_ns = vim.api.nvim_create_namespace("neotest")
+    local neotest = require("neotest")
+
     vim.diagnostic.config({
       virtual_text = {
         format = function(diagnostic)
@@ -105,71 +98,44 @@ return {
       opts.adapters = adapters
     end
 
-    require("neotest").setup(opts)
+    neotest.setup(opts)
+
+    local keymap = vim.keymap
+
+    keymap.set("n", "<leader>ctt", function()
+      neotest.run.run(vim.fn.expand("%"))
+    end, { desc = "run neotest" })
+
+    keymap.set("n", "<leader>ctT", function()
+      neotest.run.run(vim.uv.cwd())
+    end, { desc = "Run All Test Files" })
+
+    keymap.set("n", "<leader>ctr", function()
+      neotest.run.run()
+    end, { desc = "Run Nearest" })
+
+    keymap.set("n", "<leader>ctl", function()
+      neotest.run.run_last()
+    end, { desc = "Run Last" })
+
+    keymap.set("n", "<leader>cts", function()
+      neotest.summary.toggle()
+    end, { desc = "Toggle Summary" })
+
+    keymap.set("n", "<leader>cto", function()
+      neotest.output.open({ enter = true, auto_close = true })
+    end, { desc = "Show Output" })
+
+    keymap.set("n", "<leader>ctO", function()
+      neotest.output_panel.toggle()
+    end, { desc = "Toggle Output Panel" })
+
+    keymap.set("n", "<leader>ctS", function()
+      neotest.run.stop()
+    end, { desc = "Stop" })
+
+    keymap.set("n", "<leader>ctw", function()
+      neotest.watch.toggle(vim.fn.expand("%"))
+    end, { desc = "Toggle Watch" })
   end,
-  keys = {
-    {
-      "<leader>ctt",
-      function()
-        require("neotest").run.run(vim.fn.expand("%"))
-      end,
-      desc = "Run File",
-    },
-    {
-      "<leader>ctT",
-      function()
-        require("neotest").run.run(vim.uv.cwd())
-      end,
-      desc = "Run All Test Files",
-    },
-    {
-      "<leader>ctr",
-      function()
-        require("neotest").run.run()
-      end,
-      desc = "Run Nearest",
-    },
-    {
-      "<leader>ctl",
-      function()
-        require("neotest").run.run_last()
-      end,
-      desc = "Run Last",
-    },
-    {
-      "<leader>cts",
-      function()
-        require("neotest").summary.toggle()
-      end,
-      desc = "Toggle Summary",
-    },
-    {
-      "<leader>cto",
-      function()
-        require("neotest").output.open({ enter = true, auto_close = true })
-      end,
-      desc = "Show Output",
-    },
-    {
-      "<leader>ctO",
-      function()
-        require("neotest").output_panel.toggle()
-      end,
-      desc = "Toggle Output Panel",
-    },
-    {
-      "<leader>ctS",
-      function()
-        require("neotest").run.stop()
-      end,
-      desc = "Stop",
-    },
-    {
-      "<leader>ctw",
-      function()
-        require("neotest").watch.toggle(vim.fn.expand("%"))
-      end,
-      desc = "Toggle Watch",
-    },
-  },
 }

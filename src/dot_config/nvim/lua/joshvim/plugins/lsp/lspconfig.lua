@@ -7,6 +7,9 @@ return {
     { "folke/neodev.nvim", opts = {} },
   },
   config = function()
+    require("neodev").setup({
+      -- add any options here, or leave empty to use the default settings
+    })
     local lspconfig = require("lspconfig")
     local mason_lspconfig = require("mason-lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -19,10 +22,10 @@ return {
         local opts = { buffer = ev.buf, silent = true }
 
         opts.desc = "Show LSP references"
-        keymap.set("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
+        keymap.set("n", "gr", "<cmd>Lspsaga finder def+ref+imp+typ<CR>", opts) -- show definition, references
 
         opts.desc = "Go to LSP definition"
-        keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- goto declaration
+        keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- goto declaration
 
         opts.desc = "Show LSP definitions and edit in preview"
         keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
@@ -145,6 +148,7 @@ return {
       ["yamlls"] = function()
         lspconfig["yamlls"].setup({
           capabilities = capabilities,
+          filetypes = { "yaml", "yml", "yaml.tmpl", "yml.tmpl" },
           settings = {
             yaml = {
               schemas = {

@@ -4,6 +4,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    "nvim-telescope/telescope-dap.nvim",
     "nvim-tree/nvim-web-devicons",
     "folke/todo-comments.nvim",
   },
@@ -33,6 +34,7 @@ return {
     telescope.load_extension("fzf")
     telescope.load_extension("noice")
     telescope.load_extension("chezmoi")
+    telescope.load_extension("dap")
 
     local keymap = vim.keymap
     local builtin = telescope.builtin
