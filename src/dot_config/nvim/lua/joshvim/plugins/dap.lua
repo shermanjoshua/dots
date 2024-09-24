@@ -2,7 +2,6 @@ return {
   "mfussenegger/nvim-dap",
   event = "BufRead",
   dependencies = {
-    "rcarriga/nvim-dap-ui",
     "theHamsta/nvim-dap-virtual-text",
     "nvim-telescope/telescope-dap.nvim",
     "williamboman/mason.nvim",
@@ -11,7 +10,6 @@ return {
   },
   config = function()
     local dap = require("dap")
-    local dapui = require("dapui")
     local virtual_text = require("nvim-dap-virtual-text")
     local dap_ruby = require("dap-ruby")
     local mason = require("mason")
@@ -125,7 +123,9 @@ return {
       }
     end
 
-    virtual_text.setup()
+    virtual_text.setup({})
+    dap_ruby.setup()
+
     local keymap = require("vim.keymap")
 
     vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })

@@ -58,6 +58,7 @@ return {
     })
 
     local dap = require("dap")
+    local keymap = require("vim.keymap")
 
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
@@ -74,5 +75,7 @@ return {
     dap.listeners.before.event_exited.dapui_config = function()
       dapui.close()
     end
+
+    keymap.set("n", "<leader>du", "<cmd>lua dapui.toggle()<cr>", { desc = "Toggle dap-ui" })
   end,
 }

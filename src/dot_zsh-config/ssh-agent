@@ -4,12 +4,10 @@ SSH_ENV="$HOME/.ssh/environment"
 function start_agent {
     echo "Initializing new SSH agent..."
     eval $(ssh-agent -s)
-    test_identities
 }
 
 # test for identities
 function test_identities {
-    # test whether standard identities have been added to the agent already
     ssh-add -l | grep "The agent has no identities" > /dev/null
     if [ $? -eq 0 ]; then
       echo "Adding identities to agent..."
@@ -23,3 +21,4 @@ function test_identities {
 }
 
 start_agent
+test_identities
