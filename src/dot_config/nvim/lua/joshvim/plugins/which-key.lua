@@ -42,6 +42,7 @@ return {
     -- ["<leader>p"] = { name = " Packages" },
     -- ["<leader>s"] = { name = "󰦅 Search" },
     -- ["<leader>u"] = { name = "󰨇 Ui/Ux" },
+    ["<leader>t"] = { name = "󰸨 tests" },
     ["<leader>w"] = { name = "󰸨 sessions" },
     ["<leader>x"] = { name = "󱁤 diagnostics/quickfix" },
     -- ["<leader>t"] = { name = " Terminal" },

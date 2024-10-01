@@ -102,40 +102,36 @@ return {
 
     local keymap = vim.keymap
 
-    keymap.set("n", "<leader>ctt", function()
+    keymap.set("n", "<leader>tf", function()
       neotest.run.run(vim.fn.expand("%"))
-    end, { desc = "run neotest" })
+    end, { desc = "tests - current file" })
 
-    keymap.set("n", "<leader>ctT", function()
+    keymap.set("n", "<leader>ta", function()
       neotest.run.run(vim.uv.cwd())
-    end, { desc = "Run All Test Files" })
+    end, { desc = "tests - run all" })
 
-    keymap.set("n", "<leader>ctr", function()
+    keymap.set("n", "<leader>tn", function()
       neotest.run.run()
-    end, { desc = "Run Nearest" })
+    end, { desc = "tests - run nearest" })
 
-    keymap.set("n", "<leader>ctl", function()
+    keymap.set("n", "<leader>tl", function()
       neotest.run.run_last()
-    end, { desc = "Run Last" })
+    end, { desc = "tests - run last" })
 
-    keymap.set("n", "<leader>cts", function()
+    keymap.set("n", "<leader>tm", function()
       neotest.summary.toggle()
-    end, { desc = "Toggle Summary" })
+    end, { desc = "tests - toggle summary" })
 
-    keymap.set("n", "<leader>cto", function()
-      neotest.output.open({ enter = true, auto_close = true })
-    end, { desc = "Show Output" })
-
-    keymap.set("n", "<leader>ctO", function()
+    keymap.set("n", "<leader>to", function()
       neotest.output_panel.toggle()
-    end, { desc = "Toggle Output Panel" })
+    end, { desc = "tests - toggle output panel" })
 
-    keymap.set("n", "<leader>ctS", function()
+    keymap.set("n", "<leader>ts", function()
       neotest.run.stop()
-    end, { desc = "Stop" })
+    end, { desc = "tests - stop" })
 
-    keymap.set("n", "<leader>ctw", function()
+    keymap.set("n", "<leader>tw", function()
       neotest.watch.toggle(vim.fn.expand("%"))
-    end, { desc = "Toggle Watch" })
+    end, { desc = "tests - toggle watch" })
   end,
 }
