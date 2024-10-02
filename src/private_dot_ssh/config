@@ -2,10 +2,8 @@ Host personal
     User git
     Hostname github.com
     IdentityFile ~/.ssh/dotfiles_personal
-    IdentititesOnly yes
 
 Host work
     User git
     Hostname github.com
     IdentityFile ~/.ssh/dotfiles_work
-    IdentititesOnly yes
