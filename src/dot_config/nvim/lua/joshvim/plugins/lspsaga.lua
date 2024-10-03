@@ -41,7 +41,7 @@ return {
       },
       finder = {
         keys = {
-          shuttle = { "<c-l>", "<c-h>" },
+          shuttle = { "<c-o>", "<c-p>" },
           toggle_or_open = { "o", "<cr>" },
           vsplit = "s",
           split = "h",
