@@ -31,7 +31,7 @@ return {
           tabe = "t",
           quit = { "q", "<ESC>" },
           shuttle = { "<c-l>", "<c-h>" },
-          toggle_or_req = "u",
+          -- toggle_or_req = "u",
         },
       },
       diagnostic = {

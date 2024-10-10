@@ -30,7 +30,7 @@ return {
     ["<leader>a"] = { name = " copilot/gpt" },
     ["<leader>b"] = { name = " buffers" },
     ["<leader>c"] = { name = "󰨞 code" },
-    ["<leader>d"] = { name = "󱁤 quick diagnostics" },
+    ["<leader>d"] = { name = "󱁤 debug" },
     ["<leader>e"] = { name = "󱏒 file tree" },
     ["<leader>f"] = { name = " file/find" },
     ["<leader>g"] = { name = "󰘭 git" },

@@ -18,23 +18,22 @@ return {
           indentline = true,
         },
       },
+      customs = {},
       dim_inactive = {
         enabled = true,
         level = 0.48, -- Closer to 1 is lighter dimming
         excluded = {
           filetypes = {
             NvimTree = true,
-            TelescopePrompt = true,
-            TelescopeResults = true,
           },
           buftypes = {
             nofile = true,
             prompt = true,
-            terminal = true,
+            -- terminal = true,
           },
         },
       },
-      switcher = true,
+      switcher = false,
     })
 
     vim.cmd("colorscheme witch-dark")

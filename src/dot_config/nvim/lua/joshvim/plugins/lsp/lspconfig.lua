@@ -39,12 +39,6 @@ return {
         opts.desc = "Smart rename"
         keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
 
-        opts.desc = "Show line diagnostics"
-        keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
-
-        opts.desc = "Show cursor diagnostics"
-        keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
-
         opts.desc = "Jump to previous diagnostic"
         keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
 
