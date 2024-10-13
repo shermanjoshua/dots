@@ -4,7 +4,7 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
-    { "folke/neodev.nvim",                   opts = {} },
+    { "folke/neodev.nvim", opts = {} },
   },
   config = function()
     require("neodev").setup({
@@ -59,32 +59,12 @@ return {
     end
 
     mason_lspconfig.setup_handlers({
-      -- default for any not named below
+      -- default function for any not named below
       function(server_name)
         lspconfig[server_name].setup({
           capabilities = capabilities,
         })
       end,
-      -- ["ruby_lsp"] = function()
-      --   lspconfig["ruby_lsp"].setup({
-      --     cmd = { os.getenv("HOME") .. "/.rbenv/shims/ruby-lsp" },
-      --     root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
-      --     capabilities = capabilities,
-      --     settings = {
-      --       ruby_lsp = {
-      --         autoformat = true,
-      --         formatting = true,
-      --         completion = true,
-      --         diagnostics = true,
-      --         folding = true,
-      --         references = true,
-      --         rename = true,
-      --         symbols = true,
-      --       },
-      --     },
-      --     filetypes = { "ruby", "rakefile", "rake" },
-      --   })
-      -- end,
       ["solargraph"] = function()
         lspconfig["solargraph"].setup({
           cmd = { os.getenv("HOME") .. "/.rbenv/shims/solargraph", "stdio" },
@@ -107,26 +87,6 @@ return {
           filetypes = { "ruby", "rakefile", "rake" },
         })
       end,
-      -- ["standardrb"] = function()
-      --   lspconfig["standardrb"].setup({
-      --     cmd = { os.getenv("HOME") .. "/.rbenv/shims/standardrb", "--lsp" },
-      --     root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
-      --     capabilities = capabilities,
-      --     settings = {
-      --       standardrb = {
-      --         autoformat = true,
-      --         formatting = true,
-      --         completion = false,
-      --         diagnostics = false,
-      --         folding = false,
-      --         references = false,
-      --         rename = false,
-      --         symbols = false,
-      --       },
-      --     },
-      --     filetypes = { "ruby", "rakefile", "rake" },
-      --   })
-      -- end,
       ["ts_ls"] = function()
         lspconfig["ts_ls"].setup({
           capabilities = capabilities,

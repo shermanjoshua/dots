@@ -11,12 +11,14 @@ return {
 
     octo.setup({
       enable_builtin = true,
+      suppress_missing_scope = {
+        projects_v2 = true,
+      },
     })
     local keymap = require("vim.keymap")
-    local opts = { buffer = true, silent = true }
 
-    keymap.set("n", "<leader>pr", ":Octo pr list<cr>", opts)
-    keymap.set("i", "@", "@<C- x><C-o>", opts)
-    keymap.set("i", "#", "#<C-x><C-o>", opts)
+    keymap.set("n", "<leader>pr", ":Octo pr list<cr>", { desc = "pr list", buffer = true, silent = true })
+    keymap.set("i", "@", "@<C- x><C-o>", { desc = "@ in insert", buffer = true, silent = true })
+    keymap.set("i", "#", "#<C-x><C-o>", { desc = "# in insert", buffer = true, silent = true })
   end,
 }

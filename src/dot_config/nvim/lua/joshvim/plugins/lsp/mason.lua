@@ -6,7 +6,6 @@ return {
   },
   config = function()
     local mason = require("mason")
-    local mason_lspconfig = require("mason-lspconfig")
     local mason_tool_installer = require("mason-tool-installer")
 
     mason.setup({
@@ -19,25 +18,24 @@ return {
       },
     })
 
-    mason_lspconfig.setup({
-      -- list language servers here
-      ensure_installed = {
-        "solargraph",
-        "html",
-        "cssls",
-        "lua_ls",
-        "graphql",
-        "emmet_ls",
-        "prismals",
-        "pyright",
-        "dockerls",
-        "stylua",
-      },
-      automatic_installation = true,
-    })
+    -- TODO: move to lspconfig IF needed... I'm not sure it is
+    -- local mason_lspconfig = require("mason-lspconfig")
+    -- mason_lspconfig.setup({
+    --   ensure_installed = {
+    --     "solargraph",
+    --     "html",
+    --     "cssls",
+    --     "lua_ls",
+    --     "graphql",
+    --     "emmet_ls",
+    --     "prismals",
+    --     "pyright",
+    --     "dockerls",
+    --   },
+    --   automatic_installation = true,
+    -- })
 
     mason_tool_installer.setup({
-      -- list linters here
       ensure_installed = {
         "prettier",
         "stylua",
@@ -46,7 +44,6 @@ return {
         "pylint",
         "eslint_d",
         "terraform-ls",
-        "yamlls",
       },
     })
   end,
