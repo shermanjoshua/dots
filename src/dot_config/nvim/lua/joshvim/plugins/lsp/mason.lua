@@ -31,6 +31,7 @@ return {
         "prismals",
         "pyright",
         "dockerls",
+        "stylua",
       },
       automatic_installation = true,
     })

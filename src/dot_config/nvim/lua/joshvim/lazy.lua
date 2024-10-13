@@ -25,4 +25,8 @@ require("lazy").setup({
     enabled = false,
     notify = false,
   },
+  profiling = {
+    enabled = true,
+    notify = true,
+  },
 })

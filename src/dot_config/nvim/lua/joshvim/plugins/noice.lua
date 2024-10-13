@@ -12,9 +12,9 @@ return {
     local noice = require("noice")
 
     noice.setup({
-      messages = {
-        { view = "mini", view_warn = "mini" },
-      },
+      -- messages = {
+      --   { view = "mini", view_warn = "mini" },
+      -- },
       lsp = {
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,

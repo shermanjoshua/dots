@@ -4,7 +4,7 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
-    { "folke/neodev.nvim", opts = {} },
+    { "folke/neodev.nvim",                   opts = {} },
   },
   config = function()
     require("neodev").setup({
@@ -127,6 +127,12 @@ return {
       --     filetypes = { "ruby", "rakefile", "rake" },
       --   })
       -- end,
+      ["ts_ls"] = function()
+        lspconfig["ts_ls"].setup({
+          capabilities = capabilities,
+          filetypes = { "javascript", "typescript" },
+        })
+      end,
       ["graphql"] = function()
         lspconfig["graphql"].setup({
           capabilities = capabilities,
@@ -155,6 +161,7 @@ return {
       ["lua_ls"] = function()
         lspconfig["lua_ls"].setup({
           capabilities = capabilities,
+          filetypes = { "lua" },
           settings = {
             Lua = {
               diagnostics = {

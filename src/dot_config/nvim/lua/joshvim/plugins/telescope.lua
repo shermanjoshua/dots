@@ -33,7 +33,7 @@ return {
     telescope.load_extension("fzf")
     telescope.load_extension("noice")
     telescope.load_extension("chezmoi")
-    telescope.load_extension("dap")
+    -- telescope.load_extension("dap")
 
     local keymap = vim.keymap
     local builtin = telescope.builtin
