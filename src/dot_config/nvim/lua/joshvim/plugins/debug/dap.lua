@@ -6,6 +6,7 @@ return {
     "rcarriga/nvim-dap-ui",
     "theHamsta/nvim-dap-virtual-text",
     { "nvim-neotest/nvim-nio", lazy = true },
+    "suketa/nvim-dap-ruby",
     {
       "mxsdev/nvim-dap-vscode-js",
       dependencies = {
@@ -23,9 +24,12 @@ return {
     },
   },
   config = function()
+    -- LANGUAGES --
+    -- javascript-ish
     local js_languages = { "javascript", "typescript", "javascriptreact", "typescriptreact" }
     local dap = require("dap")
-    local dap_virtual_text = require("dap-virtual-text")
+    local dap_virtual_text = require("nvim-dap-virtual-text")
+    local dap_ruby = require("dap-ruby")
 
     for _, language in ipairs(js_languages) do
       dap.configurations[language] = {
@@ -67,6 +71,73 @@ return {
       }
     end
 
+    -- ruby/rails
+    dap_ruby.setup()
+
+    local function start_ruby_debugger()
+      vim.fn.setenv("RUBYOPT", "-rdebug/open")
+      vim.notify("in the method", vim.log.levels.INFO)
+      require("dap").continue()
+    end
+
+    local function start_rspec_debugger()
+      local command = "rspec"
+      if vim.fn.filereadable("bin/rspec") then
+        command = "bin/rspec"
+      end
+      print("Using command: " .. command)
+      -- https://github.com/ruby/debug?tab=readme-ov-file#invoke-as-a-remote-debuggee
+      vim.fn.setenv("RUBYOPT", "-rdebug/open_nonstop")
+      require("dap").run({
+        type = "ruby",
+        name = "debug current rspec file (from function)",
+        request = "attach",
+        command = command,
+        script = "${file}",
+        port = 38698, -- TODO: might be nice to make sure this port is open
+        server = "127.0.0.1",
+        localfs = true, -- required to be able to set breakpoints locally
+        waiting = 100, -- HACK: This is a race condition with the set RUBYOPT, if you get ECONNREFUSED try changing RUBYOPT to -rdebug/open
+      })
+    end
+
+    -- dap.adapters.ruby = function(callback, config)
+    -- callback({
+    --   type = "server",
+    --   host = "127.0.0.1",
+    --   port = 8086,
+    --   executable = {
+    --     command = "bundle",
+    --     -- stylua: ignore
+    --     args = {
+    --       "exec", "rdbg", "-n", "--open", "--port", "${port}", "-c", "--", "bundle", "exec", "${command}", "${config.script}"
+    --     },
+    --   },
+    -- })
+    -- end
+
+    dap.configurations.ruby = {
+      {
+        type = "ruby",
+        name = "debug current file",
+        port = 9222,
+        request = "attach",
+        localfs = true,
+        command = "ruby",
+        script = "${file}",
+      },
+      {
+        type = "ruby",
+        name = "run current spec file",
+        request = "attach",
+        port = 9222,
+        localfs = true,
+        command = "rspec",
+        script = "${file}",
+      },
+    }
+
+    -- UI/UX --
     local dapui = require("dapui")
     dapui.setup({
       force_buffers = true,
@@ -142,23 +213,31 @@ return {
 
     local map = require("vim.keymap")
 
-    map.set("n", "<F5>", dap.continue, { desc = "debug: start/continue" })
-    -- map.set("n", "<F7>", dapui.toggle, { desc = "debug: see last session result (use for unhandled)" })
+    map.set("n", "<F5>", function()
+      local filetype = vim.bo.filetype
+      if filetype == "ruby" then
+        start_ruby_debugger()
+        vim.notify("Starting Ruby debugger F5", vim.log.levels.info)
+      else
+        require("dap").continue()
+      end
+    end, { desc = "debug: start/continue" })
+    map.set("n", "<F7>", dapui.toggle, { desc = "debug: see last session result (use for unhandled)" })
     map.set("n", "<F10>", dap.step_over, { desc = "debug: step over" })
     map.set("n", "<F11>", dap.step_into, { desc = "debug: step into" })
     map.set("n", "<F12>", dap.step_out, { desc = "debug: step out" })
     map.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "debug: toggle breakpoint" })
-    map.set("n", "<leader>Db", function()
+    map.set("n", "<leader>dc", function()
       dap.set_breakpoint(vim.fn.input("enter breakpoint condition: "))
     end, { desc = "debug: set breakpoint" })
-    map.set("n", "<leader>dl", dap.load_launch_json, { noremap = true, desc = "debug: load launch.json" })
-    map.set("n", "<leader>dd", dap.disconnect, { noremap = true, desc = "debug: disconnect" })
+    map.set("n", "<leader>dx", dap.disconnect, { noremap = true, desc = "debug: disconnect" })
     map.set("n", "<leader>dq", dap.stop, { noremap = true, silent = true, desc = "debug: stop" })
-    map.set("n", "<leader>dr", "<Cmd>DapToggleRepl<CR>", { noremap = true, silent = true, desc = "debug: toggle repl" })
-    map.set("n", "<leader>dR", dap.run_last, { noremap = true, silent = true, desc = "debug: run previous test" })
+    map.set("n", "<leader>dr", dap.repl.toggle, { noremap = true, silent = true, desc = "debug: toggle repl" })
+    map.set("n", "<leader>dl", dap.run_last, { noremap = true, silent = true, desc = "debug: run previous test" })
     map.set("n", "<leader>dt", dap.terminate, { noremap = true, silent = true, desc = "debug: terminate" })
 
     vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
+    vim.fn.sign_define("DapStopped", { text = "👉", texthl = "", linehl = "", numhl = "" })
   end,
   vim.notify("dap loaded", vim.log.levels.info),
 }
