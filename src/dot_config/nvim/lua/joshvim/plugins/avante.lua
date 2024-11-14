@@ -34,24 +34,32 @@ return {
   },
   config = function()
     local avante = require("avante")
-    local avante_lib = require("avante_lib").load()
+    local avante_lib = require("avante_lib")
     require("img-clip").setup({})
     require("copilot").setup({})
     require("render-markdown").setup({})
 
+    avante_lib.load()
+
     avante.setup({
-      provider = "openai",
-      auto_suggestions_provider = "openai",
+      provider = "claude",
+      auto_suggestions_provider = "claude",
+      openai = {
+        model = "gpt-4o",
+        temperature = 0.7,
+        max_tokens = 1000,
+      },
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-3-5-sonnet-20241022",
+        temperature = 0,
+        max_tokens = 4096,
+      },
       keymaps = {
         toggle_auto_suggestions = "<leader>as",
         accept_suggestion = "<leader>aa",
         next_suggestion = "<leader>an",
         previous_suggestion = "<leader>ap",
-      },
-      openai = {
-        model = "gpt-4o",
-        temperature = 0.7,
-        max_tokens = 1000,
       },
     })
   end,

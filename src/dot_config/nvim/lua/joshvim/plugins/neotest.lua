@@ -1,36 +1,35 @@
-local create_cmd = vim.api.nvim_create_user_command
-
-local function setProjectRootByCurrentBuffer()
-  -- get path by test file
-  local path = vim.fn.expand("%:p:h")
-  -- find up to 5 levels to find package.json
-  for i = 1, 5 do
-    local package_json = path .. "/package.json"
-    if vim.fn.filereadable(package_json) == 1 then
-      break
-    end
-    path = vim.fn.fnamemodify(path, ":h")
-  end
-
-  vim.g["test#project_root"] = path
-end
--- Usage: :TestWithJest when in test file or :TestWithVitest when in test file
--- vim-test plugin has not supported on large project or monorepo yet. A lot of issues on github
--- e.g: "Not a test file" error when running any of the test command
-create_cmd("JestRunner", function()
-  setProjectRootByCurrentBuffer()
-  vim.g["test#javascript#runner"] = "jest"
-
-  -- set npx jest to run test
-  vim.g["test#javascript#jest#executable"] = "npx jest"
-  vim.g["test#javascript#jest#options"] = "--detectOpenHandles --updateSnapshot"
-
-  vim.cmd("TestNearest")
-end, {})
-
+-- local create_cmd = vim.api.nvim_create_user_command
+--
+-- local function setProjectRootByCurrentBuffer()
+--   -- get path by test file
+--   local path = vim.fn.expand("%:p:h")
+--   -- find up to 5 levels to find package.json
+--   for i = 1, 5 do
+--     local package_json = path .. "/package.json"
+--     if vim.fn.filereadable(package_json) == 1 then
+--       break
+--     end
+--     path = vim.fn.fnamemodify(path, ":h")
+--   end
+--
+--   vim.g["test#project_root"] = path
+-- end
+-- -- Usage: :TestWithJest when in test file or :TestWithVitest when in test file
+-- -- vim-test plugin has not supported on large project or monorepo yet. A lot of issues on github
+-- -- e.g: "Not a test file" error when running any of the test command
+-- create_cmd("JestRunner", function()
+--   setProjectRootByCurrentBuffer()
+--   vim.g["test#javascript#runner"] = "jest"
+--
+--   -- set npx jest to run test
+--   vim.g["test#javascript#jest#executable"] = "npx jest"
+--   vim.g["test#javascript#jest#options"] = "--detectOpenHandles --updateSnapshot"
+--
+--   vim.cmd("TestNearest")
+-- end, {})
+--
 return {
   "nvim-neotest/neotest",
-  optional = true,
   dependencies = {
     "nvim-neotest/nvim-nio",
     "nvim-neotest/neotest-plenary",
@@ -38,30 +37,21 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "antoinemadec/FixCursorHold.nvim",
   },
-  opts = {
-    spec = {
-      { "<leader>ct", group = "test" },
-    },
-    -- Can be a list of adapters like what neotest expects,
-    -- or a list of adapter names,
-    -- or a table of adapter names, mapped to adapter configs.
-    -- The adapter will then be automatically loaded with the config.
-    adapters = {
-      ["neotest-rspec"] = {
-        args = { "" },
-      },
-      ["jest"] = {
-        args = { "" },
-      },
-    },
-    status = { virtual_text = true },
-    output = { open_on_run = true },
-  },
   config = function(_, opts)
     local neotest_ns = vim.api.nvim_create_namespace("neotest")
     local neotest = require("neotest")
 
     vim.diagnostic.config({
+      adapters = {
+        ["neotest-rspec"] = {
+          args = { "" },
+        },
+        ["jest"] = {
+          args = { "" },
+        },
+      },
+      status = { virtual_text = true },
+      output = { open_on_run = true },
       virtual_text = {
         format = function(diagnostic)
           -- Replace newline and tab characters with space for more compact diagnostics

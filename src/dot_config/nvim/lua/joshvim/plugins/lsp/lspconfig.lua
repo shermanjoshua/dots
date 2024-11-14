@@ -93,6 +93,12 @@ return {
           filetypes = { "javascript", "typescript" },
         })
       end,
+      ["tailwindcss"] = function()
+        lspconfig["tailwindcss"].setup({
+          capabilities = capabilities,
+          filetypes = { "css", "javascript", "javascriptreact", "typescriptreact" },
+        })
+      end,
       ["graphql"] = function()
         lspconfig["graphql"].setup({
           capabilities = capabilities,

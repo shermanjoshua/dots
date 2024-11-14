@@ -2,7 +2,7 @@ return {
   "NeogitOrg/neogit",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "sindrets/diffview.nvim",
+    "sindrets/diffview.nvim", -- TODO: Need setup
     "nvim-telescope/telescope.nvim",
   },
   config = function()
