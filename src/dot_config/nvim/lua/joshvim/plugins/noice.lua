@@ -4,14 +4,20 @@ return {
   opts = {},
   dependencies = {
     "MunifTanjim/nui.nvim",
-    {
-      "rcarriga/nvim-notify",
-    },
+    "rcarriga/nvim-notify",
   },
   config = function()
     local noice = require("noice")
 
     noice.setup({
+      commands = {
+        all = {
+          view = "popup",
+        },
+        history = {
+          view = "popup",
+        },
+      },
       messages = {
         { view_history = "vsplit" },
       },
@@ -59,8 +65,8 @@ return {
         bottom_search = false,
         command_palette = true,
         long_message_to_split = true,
-        inc_rename = true,
-        lsp_doc_border = true,
+        inc_rename = false,
+        lsp_doc_border = false,
       },
     })
     local keymap = vim.keymap

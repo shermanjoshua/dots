@@ -5,12 +5,12 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
+    "williamboman/mason.nvim",
   },
   config = function()
-    require("neodev").setup({
-      -- add any options here, or leave empty to use the default settings
-    })
+    require("neodev").setup({})
     local lspconfig = require("lspconfig")
+    local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -90,7 +90,7 @@ return {
       ["ts_ls"] = function()
         lspconfig["ts_ls"].setup({
           capabilities = capabilities,
-          filetypes = { "javascript", "typescript" },
+          filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
         })
       end,
       ["tailwindcss"] = function()

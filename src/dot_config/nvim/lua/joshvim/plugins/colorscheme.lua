@@ -14,14 +14,12 @@ return {
           bracket = true,
           dashboard = true,
           diffview = true,
-          -- explorer = true,
           indentline = true,
         },
       },
-      customs = {},
       dim_inactive = {
         enabled = true,
-        level = 0.48, -- Closer to 1 is lighter dimming
+        level = 0.5,
         excluded = {
           filetypes = {
             NvimTree = true,
@@ -29,11 +27,10 @@ return {
           buftypes = {
             nofile = true,
             prompt = true,
-            -- terminal = true,
           },
         },
       },
-      switcher = false,
+      switcher = true,
     })
 
     vim.cmd("colorscheme witch-dark")
