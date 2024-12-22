@@ -1,13 +1,13 @@
 return {
   "williamboman/mason.nvim",
   dependencies = {
-    "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
+    "williamboman/mason-lspconfig.nvim",
   },
   config = function()
     local mason = require("mason")
-    local mason_lspconfig = require("mason-lspconfig")
     local mason_tool_installer = require("mason-tool-installer")
+    local mason_lspconfig = require("mason-lspconfig")
 
     mason.setup({
       ui = {
@@ -20,7 +20,22 @@ return {
     })
 
     mason_lspconfig.setup({
-      -- list language servers here
+      ensure_installed = {
+        "solargraph",
+        "html",
+        "cssls",
+        "lua_ls",
+        "graphql",
+        "emmet_ls",
+        "prismals",
+        "pyright",
+        "dockerls",
+      },
+      automatic_installation = true,
+    })
+
+    -- TODO: move to lspconfig IF needed... I'm not sure it is
+    mason_lspconfig.setup({
       ensure_installed = {
         "solargraph",
         "html",
@@ -36,8 +51,6 @@ return {
     })
 
     mason_tool_installer.setup({
-      -- list linters here
-      -- TODO: ditch the other linter plugin
       ensure_installed = {
         "prettier",
         "stylua",
@@ -46,8 +59,6 @@ return {
         "pylint",
         "eslint_d",
         "terraform-ls",
-        -- "standardrb",
-        "yamlls",
       },
     })
   end,

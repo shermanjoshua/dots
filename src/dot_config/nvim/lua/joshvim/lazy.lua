@@ -16,13 +16,18 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   { import = "joshvim.plugins" },
   { import = "joshvim.plugins.lsp" },
+  { import = "joshvim.plugins.debug" },
   { import = "joshvim.utils" },
   checker = {
     enabled = true,
     notify = false,
   },
   change_detection = {
-    enabled = false,
+    enabled = true,
     notify = false,
   },
+  -- profiling = {
+  --   enabled = true,
+  --   notify = true,
+  -- },
 })

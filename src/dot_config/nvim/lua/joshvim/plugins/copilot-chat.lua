@@ -20,12 +20,13 @@ local prompts = {
 return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    branch = "main",
     dependencies = {
       { "zbirenbaum/copilot.lua" },
       { "nvim-telescope/telescope.nvim" },
-      { "nvim-lua/plenary.nvim" },
+      { "nvim-lua/plenary.nvim", branch = "master" },
     },
+    build = "make tiktoken",
     opts = {
       question_header = "## User ",
       answer_header = "## Copilot ",
@@ -60,10 +61,10 @@ return {
         show_diff = {
           normal = "amd",
         },
-        show_system_prompt = {
+        show_info = {
           normal = "amp",
         },
-        show_user_selection = {
+        show_context = {
           normal = "ams",
         },
       },
@@ -71,6 +72,7 @@ return {
     config = function(_, opts)
       local chat = require("CopilotChat")
       local select = require("CopilotChat.select")
+
       opts.selection = select.unnamed
       -- Override the git prompts message
       opts.prompts.Commit = {

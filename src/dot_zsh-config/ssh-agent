@@ -2,24 +2,23 @@
 SSH_ENV="$HOME/.ssh/environment"
 
 function start_agent {
-    echo "Initializing new SSH agent..."
+    # echo "Initializing new SSH agent..."
     eval $(ssh-agent -s)
-    test_identities
 }
 
 # test for identities
 function test_identities {
-    # test whether standard identities have been added to the agent already
     ssh-add -l | grep "The agent has no identities" > /dev/null
     if [ $? -eq 0 ]; then
-      echo "Adding identities to agent..."
+      # echo "Adding identities to agent..."
 
       declare ssh_dir=$HOME/.ssh
 
       for file in $(find "$ssh_dir" -type f ! -name '*.*' -a -name 'dotfiles_*'); do
-        ssh-add $file
+        ssh-add $file -q
       done
     fi
 }
 
 start_agent
+test_identities

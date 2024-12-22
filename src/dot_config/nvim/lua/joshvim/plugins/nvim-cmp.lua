@@ -31,6 +31,8 @@ return {
 
     require("luasnip.loaders.from_vscode").lazy_load()
     require("luasnip").filetype_extend("ruby", { "rails" })
+    luasnip.filetype_extend("javascriptreact", { "html" })
+    luasnip.filetype_extend("typescriptreact", { "html" })
 
     cmp.setup({
       completion = {

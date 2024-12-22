@@ -20,8 +20,7 @@ return {
           vsplit = "v",
           split = "s",
           tabe = "t",
-          -- quit = { 'q', '<ESC>' },
-          close = { "q", "<ESC>" },
+          quit = { "q", "<ESC>" },
         },
       },
       callhierarchy = {
@@ -30,10 +29,9 @@ return {
           vsplit = "v",
           split = "s",
           tabe = "t",
-          -- quit = { 'q', '<ESC>' },
-          close = { "q", "<ESC>" },
+          quit = { "q", "<ESC>" },
           shuttle = { "<c-l>", "<c-h>" },
-          toggle_or_req = "u",
+          -- toggle_or_req = "u",
         },
       },
       diagnostic = {
@@ -43,14 +41,16 @@ return {
       },
       finder = {
         keys = {
-          shuttle = { "<c-l>", "<c-h>" },
+          shuttle = { "<c-o>", "<c-p>" },
           toggle_or_open = { "o", "<cr>" },
           vsplit = "s",
           split = "h",
           tabe = "t",
           tabnew = "r",
-          -- quit = { 'q', '<ESC>' },
-          close = { "q", "<ESC>" },
+          quit = { "q", "<ESC>" },
+        },
+        methods = {
+          typ = "textDocument/typeDefinition",
         },
       },
       outline = {

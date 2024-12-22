@@ -5,9 +5,12 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
+    "williamboman/mason.nvim",
   },
   config = function()
+    require("neodev").setup({})
     local lspconfig = require("lspconfig")
+    local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -19,10 +22,10 @@ return {
         local opts = { buffer = ev.buf, silent = true }
 
         opts.desc = "Show LSP references"
-        keymap.set("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
+        keymap.set("n", "gr", "<cmd>Lspsaga finder def+ref+imp+typ<CR>", opts) -- show definition, references
 
         opts.desc = "Go to LSP definition"
-        keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- goto declaration
+        keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- goto declaration
 
         opts.desc = "Show LSP definitions and edit in preview"
         keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
@@ -35,12 +38,6 @@ return {
 
         opts.desc = "Smart rename"
         keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
-
-        opts.desc = "Show line diagnostics"
-        keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
-
-        opts.desc = "Show cursor diagnostics"
-        keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
 
         opts.desc = "Jump to previous diagnostic"
         keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
@@ -62,32 +59,12 @@ return {
     end
 
     mason_lspconfig.setup_handlers({
-      -- default for any not named below
+      -- default function for any not named below
       function(server_name)
         lspconfig[server_name].setup({
           capabilities = capabilities,
         })
       end,
-      -- ["ruby_lsp"] = function()
-      --   lspconfig["ruby_lsp"].setup({
-      --     cmd = { os.getenv("HOME") .. "/.rbenv/shims/ruby-lsp" },
-      --     root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
-      --     capabilities = capabilities,
-      --     settings = {
-      --       ruby_lsp = {
-      --         autoformat = true,
-      --         formatting = true,
-      --         completion = true,
-      --         diagnostics = true,
-      --         folding = true,
-      --         references = true,
-      --         rename = true,
-      --         symbols = true,
-      --       },
-      --     },
-      --     filetypes = { "ruby", "rakefile", "rake" },
-      --   })
-      -- end,
       ["solargraph"] = function()
         lspconfig["solargraph"].setup({
           cmd = { os.getenv("HOME") .. "/.rbenv/shims/solargraph", "stdio" },
@@ -110,26 +87,18 @@ return {
           filetypes = { "ruby", "rakefile", "rake" },
         })
       end,
-      -- ["standardrb"] = function()
-      --   lspconfig["standardrb"].setup({
-      --     cmd = { os.getenv("HOME") .. "/.rbenv/shims/standardrb", "--lsp" },
-      --     root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
-      --     capabilities = capabilities,
-      --     settings = {
-      --       standardrb = {
-      --         autoformat = true,
-      --         formatting = true,
-      --         completion = false,
-      --         diagnostics = false,
-      --         folding = false,
-      --         references = false,
-      --         rename = false,
-      --         symbols = false,
-      --       },
-      --     },
-      --     filetypes = { "ruby", "rakefile", "rake" },
-      --   })
-      -- end,
+      ["ts_ls"] = function()
+        lspconfig["ts_ls"].setup({
+          capabilities = capabilities,
+          filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+        })
+      end,
+      ["tailwindcss"] = function()
+        lspconfig["tailwindcss"].setup({
+          capabilities = capabilities,
+          filetypes = { "css", "javascript", "javascriptreact", "typescriptreact" },
+        })
+      end,
       ["graphql"] = function()
         lspconfig["graphql"].setup({
           capabilities = capabilities,
@@ -145,6 +114,7 @@ return {
       ["yamlls"] = function()
         lspconfig["yamlls"].setup({
           capabilities = capabilities,
+          filetypes = { "yaml", "yml", "yaml.tmpl", "yml.tmpl" },
           settings = {
             yaml = {
               schemas = {
@@ -157,6 +127,7 @@ return {
       ["lua_ls"] = function()
         lspconfig["lua_ls"].setup({
           capabilities = capabilities,
+          filetypes = { "lua" },
           settings = {
             Lua = {
               diagnostics = {

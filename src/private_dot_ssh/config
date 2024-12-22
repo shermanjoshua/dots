@@ -1,3 +1,9 @@
-Host *
-  AddKeysToAgent yes
-  UseKeychain yes
+Host personal
+    User git
+    Hostname github.com
+    IdentityFile ~/.ssh/dotfiles_personal
+
+Host work
+    User git
+    Hostname github.com
+    IdentityFile ~/.ssh/dotfiles_work

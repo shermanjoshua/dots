@@ -16,6 +16,10 @@ return {
       },
       highlight = { enable = true },
       indent = { enable = true, disable = { "yaml", "html" } },
+      modules = {},
+      sync_install = true,
+      auto_install = true,
+      ignore_install = {},
       ensure_installed = {
         "ruby",
         "yaml",

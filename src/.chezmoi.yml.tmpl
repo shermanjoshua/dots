@@ -1,5 +1,6 @@
 name: "Josh Sherman"
 {{ $email := promptStringOnce . "email" "Email address" -}}
+{{ $isWork := promptBoolOnce . "isWork" "Is this a work machine?" -}}
 gpgKeyId: "334F4C7D"
 
 merge:
@@ -30,3 +31,4 @@ progress: true
 data:
   email: {{ $email | quote }}
   editor: nvim
+  isWork: {{ $isWork | quote }}

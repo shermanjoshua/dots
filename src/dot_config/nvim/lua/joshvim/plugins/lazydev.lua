@@ -18,6 +18,6 @@ return {
         group_index = 0, -- set group index to 0 to skip loading LuaLS completions
       })
     end,
-    { "folke/neodev.nvim", enabled = false },
+    { "folke/neodev.nvim", enabled = true },
   },
 }

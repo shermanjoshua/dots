@@ -2,7 +2,6 @@
 
 set -eufo pipefail
 
-defaults write -g AppleEnableSwipeNavigateWithScrolls -int 0
 defaults write -g AppleMiniaturizeOnDoubleClick -int 0
 defaults write -g ApplePressAndHoldEnabled -int 0
 defaults write -g CGDisableCursorLocationMagnification -int 0
@@ -18,8 +17,6 @@ defaults write -g NSAutomaticTextCorrectionEnabled -int 0
 defaults write -g NSUserDictionaryReplacementItems '()'
 defaults write -g WebAutomaticSpellingCorrectionEnabled -int 0
 defaults write -g com.apple.keyboard.fnState -int 1
-defaults write -g com.apple.swipescrolldirection -int 0
-defaults write -g com.apple.trackpad.forceClick -int 0
 
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
@@ -64,7 +61,7 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
 # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
 # defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-# defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+# defaults -currentHost write NSGlobalDomain com.apple/trackpad.enableSecondaryClick -bool true
 #
 # # Disable press-and-hold for keys in favor of key repeat
 # defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false

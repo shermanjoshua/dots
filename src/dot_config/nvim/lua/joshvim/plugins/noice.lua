@@ -4,16 +4,55 @@ return {
   opts = {},
   dependencies = {
     "MunifTanjim/nui.nvim",
-    {
-      "rcarriga/nvim-notify",
-    },
+    "rcarriga/nvim-notify",
   },
   config = function()
     local noice = require("noice")
 
     noice.setup({
+      commands = {
+        all = {
+          view = "popup",
+        },
+        history = {
+          view = "popup",
+        },
+      },
       messages = {
-        { view = "mini", view_warn = "mini" },
+        { view_history = "vsplit" },
+      },
+      redirect = {
+        filter = {},
+      },
+      views = {
+        cmdline_popup = {
+          position = {
+            row = 5,
+            col = "50%",
+          },
+          size = {
+            width = 60,
+            height = "auto",
+          },
+        },
+        popupmenu = {
+          relative = "editor",
+          position = {
+            row = 8,
+            col = "50%",
+          },
+          size = {
+            width = 60,
+            height = 10,
+          },
+          border = {
+            style = "rounded",
+            padding = { 0, 1 },
+          },
+          win_options = {
+            winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+          },
+        },
       },
       lsp = {
         override = {
@@ -26,8 +65,8 @@ return {
         bottom_search = false,
         command_palette = true,
         long_message_to_split = true,
-        inc_rename = true,
-        lsp_doc_border = true,
+        inc_rename = false,
+        lsp_doc_border = false,
       },
     })
     local keymap = vim.keymap
